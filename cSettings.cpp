@@ -148,47 +148,47 @@ void cSettingsFile::LoadSettings()
 void cSettingsFile::ResetSettings()
 {
 	//Aimbot
-	(int)cFuncAimBoneTag.iValue = 2;
-	(int)cFuncAimOffsetX.iValue = 50;
-	(int)cFuncAimOffsetY.iValue = 50;
-	(int)cFuncAimKey.iValue = 0;
-	(int)cFuncAimType.iValue = 0;
-	(int)cFuncAimFilter.iValue = 0;
-	(int)cFuncAimbot.iValue = false;
-	(int)cFuncAimFov.iValue = 360;
+	cFuncAimBoneTag.iValue = 2;
+	cFuncAimOffsetX.iValue = 50;
+	cFuncAimOffsetY.iValue = 50;
+	cFuncAimKey.iValue = 0;
+	cFuncAimType.iValue = 0;
+	cFuncAimFilter.iValue = 0;
+	cFuncAimbot.iValue = false;
+	cFuncAimFov.iValue = 360;
 	//ESP
-	(int)cFuncESPLines.iValue = false;
-	(int)cFuncESP2Dbox.iValue = false;
-	(int)cFuncESP3Dbox.iValue = false;
-	(int)cFuncESPNames.iValue = false;
-	(int)cFuncESPDistance.iValue = false;
-	(int)cFuncESPEnemyVISR.iValue = 229;
-	(int)cFuncESPEnemyVISG.iValue = 3;
-	(int)cFuncESPEnemyVISB.iValue = 3;
-	(int)cFuncESPEnemyUNVISR.iValue = 229;
-	(int)cFuncESPEnemyUNVISG.iValue = 197;
-	(int)cFuncESPEnemyUNVISB.iValue = 3;
-	(int)cFuncESPFriendVISR.iValue = 159;
-	(int)cFuncESPFriendVISG.iValue = 229;
-	(int)cFuncESPFriendVISB.iValue = 3;
-	(int)cFuncESPFriendUNVISR.iValue = 3;
-	(int)cFuncESPFriendUNVISG.iValue = 201;
-	(int)cFuncESPFriendUNVISB.iValue = 229;
-	(int)cFuncESPFilter.iValue = 0;
-	(int)cFuncESPSkeleton.iValue = false;
-	(int)cFuncESPFont.iValue = 1;
+	cFuncESPLines.iValue = false;
+	cFuncESP2Dbox.iValue = false;
+	cFuncESP3Dbox.iValue = false;
+	cFuncESPNames.iValue = false;
+	cFuncESPDistance.iValue = false;
+	cFuncESPEnemyVISR.iValue = 229;
+	cFuncESPEnemyVISG.iValue = 3;
+	cFuncESPEnemyVISB.iValue = 3;
+	cFuncESPEnemyUNVISR.iValue = 229;
+	cFuncESPEnemyUNVISG.iValue = 197;
+	cFuncESPEnemyUNVISB.iValue = 3;
+	cFuncESPFriendVISR.iValue = 159;
+	cFuncESPFriendVISG.iValue = 229;
+	cFuncESPFriendVISB.iValue = 3;
+	cFuncESPFriendUNVISR.iValue = 3;
+	cFuncESPFriendUNVISG.iValue = 201;
+	cFuncESPFriendUNVISB.iValue = 229;
+	cFuncESPFilter.iValue = 0;
+	cFuncESPSkeleton.iValue = false;
+	cFuncESPFont.iValue = 1;
 	//Visual
-	(int)cFuncVisualWH.iValue = false;
-	(int)cFuncVisualCross.iValue = 0;
-	(int)cFuncVisualGranade.iValue = false;
-	(int)cFuncVisualMG.iValue = false;
-	(int)cFuncRadar.iValue = false;
-	(int)cFuncVisualTargetInfo.iValue = false;
+	cFuncVisualWH.iValue = false;
+	cFuncVisualCross.iValue = 0;
+	cFuncVisualGranade.iValue = false;
+	cFuncVisualMG.iValue = false;
+	cFuncRadar.iValue = false;
+	cFuncVisualTargetInfo.iValue = false;
 	//Misc
-	(int)cFuncMiscNoRecoil.iValue = false;
-	(int)cFuncMiscKillSpam.iValue = false;
-	(int)cFuncMiscKillSound.iValue = false;
-	(int)cFuncMiscNameStealer.iValue = false;
-	(int)cFuncAutoVote.iValue = false;
-	(int)cFuncAutoShoot.iValue = false;
+	cFuncMiscNoRecoil.iValue = false;
+	cFuncMiscKillSpam.iValue = false;
+	cFuncMiscKillSound.iValue = false;
+	cFuncMiscNameStealer.iValue = false;
+	cFuncAutoVote.iValue = false;
+	cFuncAutoShoot.iValue = false;
 }

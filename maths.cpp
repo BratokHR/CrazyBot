@@ -24,7 +24,7 @@ int CG_GetHandle( centity_t * cent )
 		pop ebx
 	}
 }
-int CG_LerpTag( centity_t * cent, orientation_t * _or, short tag, int handle )
+int CG_LerpTag( centity_t * cent, orientation_t * _orient, short tag, int handle )
 {
 	__asm
 	{
@@ -40,14 +40,14 @@ int CG_LerpTag( centity_t * cent, orientation_t * _or, short tag, int handle )
 		pop		ecx
 	}
 }
-bool CG_SetTagOrigin( centity_t * cent, short tag, orientation_t * or  )
+bool CG_SetTagOrigin( centity_t * cent, short tag, orientation_t * orient  )
 {
 
 	int handle = CG_GetHandle( cent );
 
 	if( handle )
 	{
-		if( CG_LerpTag( cent, or, tag, handle ) )
+		if( CG_LerpTag( cent, orient, tag, handle ) )
 			return true;
 	}
 

@@ -2,16 +2,16 @@
 #include <windows.h>
 #include <vector>
 #include <algorithm>
-#include <xstring>
+// #include <xstring>
 #include <fstream>
 #include <string>
-#include <detours.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>
 #include <mmsystem.h>
+#include <cmath>
 
-#pragma comment(lib, "winmm")
+// #pragma comment(lib, "winmm")
 
 using namespace std;
 
@@ -24,4 +24,5 @@ using namespace std;
 #include "cControlManager.h"
 #include "cRadar.h"
 #include "crazybot.h"
-#include "main.h"
+#include "dllmain.h"
+#include "detours.h"

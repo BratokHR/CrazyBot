@@ -1,9 +1,9 @@
-#define Thread(function) CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)function, NULL, NULL, NULL)
-#define OFFSET_GFX_ENDFRAME 0x004C5A40
-#define	CG_OBITUARY 0x004D9ED0
+#pragma once
 
-extern  void		(*orig_CG_Obituary)			( );
-void                HooK_CG_Obituary            ( );
+#define PROCESS_NAME "CoD2MP_s.exe" 
+#define DLL_NAME "CrazyBot.dll"
 
-extern DWORD			GFX_MODULE_Base;
-extern cMenuManager		m;
+#define CREATE_THREAD_ACCESS (PROCESS_CREATE_THREAD | PROCESS_QUERY_INFORMATION | PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_VM_READ) 
+
+BOOL LoadDll(char *procName, char *dllName);
+BOOL InjectDLL(DWORD ProcessID, char *dllName);

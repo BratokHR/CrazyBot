@@ -38,7 +38,7 @@ void cMenuManager::initialize()
 	  DropBone->addChoice("Pelvis");
 	 AimbotTab->add(DropBone);
 
-	 AimbotTab->add(new CButton("Key on aimkey", 250, POS(15)-2, 160, 20, SelectAimKey));
+	 AimbotTab->add(new CButton("Key on aimkey", 250, POS(15)-2, 160, 20, (void*)SelectAimKey));
 
 	cMenu* ESPTab = new cMenu("ESP", -1, -1, 388, 365, NULL);
 	ESPTab->add(new CGroupBox("ESP", 6, 35, 437, 360));
@@ -96,7 +96,7 @@ void cMenuManager::initialize()
 	MiscTab->add(new CCheckbox("KillSpam", 30, POS(4), &cFuncMiscKillSpam.iValue));
 	MiscTab->add(new CCheckbox("KillSound", 30, POS(5), &cFuncMiscKillSound.iValue));
 
-	MiscTab->add(new CButton("Open console", 250, POS(15)-2, 160, 20, OpenConsole));
+	MiscTab->add(new CButton("Open console", 250, POS(15)-2, 160, 20, (void*)OpenConsole));
 
 	this->add(mainMenu);
 	mainTabControl->addTab(AimbotTab);
@@ -387,13 +387,12 @@ void cMenuManager::handleInput()
 				{
 					DWORD address = (DWORD)control->function;
 
-					_asm
-					{
-						mov eax, control;
-						push eax;
-						call address;
-						pop ebx;
-					}
+					__asm(".intel_syntax noprefix\n");
+					
+					__asm("mov eax, control\n");
+					__asm("push eax\n");
+					__asm("call address\n");
+					__asm("pop ebx\n");
 				}
 
 			}
@@ -409,13 +408,12 @@ void cMenuManager::handleInput()
 				{
 					DWORD address = (DWORD)control->function;
 
-					_asm
-					{
-						mov eax, control;
-						push eax;
-						call address;
-						pop ebx;
-					}
+					__asm(".intel_syntax noprefix\n");
+					
+					__asm("mov eax, control\n");
+					__asm("push eax\n");
+					__asm("call address\n");
+					__asm("pop ebx\n");
 				}
 
 			}
@@ -498,13 +496,12 @@ void cMenuManager::handleInput()
 			{
 				DWORD address = (DWORD)control->function;
 
-				_asm
-				{
-					mov eax, control;
-					push eax;
-					call address;
-					pop ebx;
-				}
+				__asm(".intel_syntax noprefix\n");
+				
+				__asm("mov eax, control\n");
+				__asm("push eax");
+				__asm("call address\n");
+				__asm("pop ebx\n");
 			}
 
 		}
@@ -941,7 +938,7 @@ void cMenuManager::MessageBox(string title, string message)
 {
 	cMenu* messageBox = new cMenu(title, 100, 100, 400, 150, NULL);
 	messageBox->add(new CLabel(message, 10, 75 - 14, DT_LEFT));
-	messageBox->add(new CButton("OK", 150, 115, 100, 20, closeMB));
+	messageBox->add(new CButton("OK", 150, 115, 100, 20, (void*)closeMB));
 	this->add(messageBox);
 
 	setForcedTopMenu(messageBox);
