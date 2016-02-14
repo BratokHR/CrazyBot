@@ -217,5 +217,7 @@ pip-log.txt
 ## CrazyBot
 #############
 
-CrazyBot.dll
-CrazyBotInject.exe
+*.o
+*.opp
+*.dll
+*.exe

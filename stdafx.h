@@ -2,7 +2,6 @@
 #include <windows.h>
 #include <vector>
 #include <algorithm>
-// #include <xstring>
 #include <fstream>
 #include <string>
 #include <stdio.h>
@@ -10,8 +9,6 @@
 #include <time.h>
 #include <mmsystem.h>
 #include <cmath>
-
-// #pragma comment(lib, "winmm")
 
 using namespace std;
 
@@ -25,4 +22,4 @@ using namespace std;
 #include "cRadar.h"
 #include "crazybot.h"
 #include "dllmain.h"
-#include "detours.h"
+#include "minhook.h"

@@ -10,6 +10,7 @@ DWORD   GetTagNumber = 0x00474560;
 
 int CG_GetHandle( centity_t * cent )
 {
+	/*
 	__asm
 	{
 		push ebx
@@ -23,9 +24,11 @@ int CG_GetHandle( centity_t * cent )
 		pop ecx
 		pop ebx
 	}
+	*/
 }
 int CG_LerpTag( centity_t * cent, orientation_t * _orient, short tag, int handle )
 {
+	/*
 	__asm
 	{
 		push	ecx
@@ -39,6 +42,7 @@ int CG_LerpTag( centity_t * cent, orientation_t * _orient, short tag, int handle
 
 		pop		ecx
 	}
+	*/
 }
 bool CG_SetTagOrigin( centity_t * cent, short tag, orientation_t * orient  )
 {

@@ -1,5 +1,19 @@
 #include "stdafx.h"
 
+template <typename T>
+inline MH_STATUS MH_CreateHookEx(LPVOID pTarget, LPVOID pDetour, T** ppOriginal)
+{
+    return MH_CreateHook(pTarget, pDetour, reinterpret_cast<LPVOID*>(ppOriginal));
+}
+
+template <typename T>
+inline MH_STATUS MH_CreateHookApiEx(
+    LPCWSTR pszModule, LPCSTR pszProcName, LPVOID pDetour, T** ppOriginal)
+{
+    return MH_CreateHookApi(
+        pszModule, pszProcName, pDetour, reinterpret_cast<LPVOID*>(ppOriginal));
+}
+
 DWORD GFX_MODULE_Base = NULL;
 bool init = false;
 cMenuManager m;
@@ -161,6 +175,7 @@ void Bot_Obituary( entityState_t * ent, int iMod )
 void h_CG_Obituary( )
 {
 	static entityState_t * ent;
+	/*
 	__asm(".intel_syntax noprefix\n");
 	__asm("mov ent, eax\n");
 
@@ -169,6 +184,7 @@ void h_CG_Obituary( )
 
 	__asm(".intel_syntax noprefix\n");
 	__asm("mov eax, ent\n");
+	*/
 	o_CG_Obituary( );
 }
 
@@ -275,6 +291,13 @@ BOOL APIENTRY DllMain(HINSTANCE hModule, DWORD fdwReason, LPVOID lpvReserved)
 {
 	if (fdwReason == DLL_PROCESS_ATTACH)
 	{
+		// Initialize MinHook.
+		if (MH_Initialize() != MH_OK)
+		{
+			return 1;
+		
+		}
+		
 		bot.hModule = hModule;
 
 		DWORD n = GetModuleFileName( hModule, bot.path, MAX_PATH );
@@ -292,15 +315,38 @@ BOOL APIENTRY DllMain(HINSTANCE hModule, DWORD fdwReason, LPVOID lpvReserved)
 
 		if(GFX_MODULE_Base)
 		{
-			o_EndFrame = (t_EndFrame)DetourFunction( (PBYTE)OFFSET_GFX_ENDFRAME, (PBYTE)h_EndFrame );
-			o_CG_Obituary = (t_CG_Obituary)DetourFunction( (PBYTE)CG_OBITUARY, (PBYTE)h_CG_Obituary );
+			if (MH_CreateHookApiEx((LPCWSTR)GFX_MODULE_Base, "OFFSET_GFX_ENDFRAME", (LPVOID)h_EndFrame, &o_EndFrame) != MH_OK)
+			{
+				return 1;
+			}
+			if (MH_CreateHookApiEx((LPCWSTR)GFX_MODULE_Base, "CG_OBITUARY", (LPVOID)h_CG_Obituary, &o_CG_Obituary) != MH_OK)
+			{
+				return 1;
+			}
+			
+			//o_EndFrame = (t_EndFrame)DetourFunction( (PBYTE)OFFSET_GFX_ENDFRAME, (PBYTE)h_EndFrame );
+			//o_CG_Obituary = (t_CG_Obituary)DetourFunction( (PBYTE)CG_OBITUARY, (PBYTE)h_CG_Obituary );
+			
+			if (MH_EnableHook((LPVOID)h_EndFrame) != MH_OK)
+			{
+				return 1;
+			}
+			if (MH_EnableHook((LPVOID)h_CG_Obituary) != MH_OK)
+			{
+				return 1;
+			}
 		}
 		else
 			MessageBox ( NULL, "GFX_D3D_MP_X86_S.dll not Found", "Error", MB_OK);
 	}
 	else if (fdwReason == DLL_PROCESS_DETACH) {
-		DetourRemove( (PBYTE)o_EndFrame, (PBYTE)h_EndFrame );
-		DetourRemove( (PBYTE)o_CG_Obituary, (PBYTE)h_CG_Obituary );
+		// Uninitialize MinHook.
+		if (MH_Uninitialize() != MH_OK)
+		{
+			return 1;
+		}
+		//DetourRemove( (PBYTE)o_EndFrame, (PBYTE)h_EndFrame );
+		//DetourRemove( (PBYTE)o_CG_Obituary, (PBYTE)h_CG_Obituary );
 	}
 	return TRUE;
 }

@@ -387,12 +387,14 @@ void cMenuManager::handleInput()
 				{
 					DWORD address = (DWORD)control->function;
 
+					/*
 					__asm(".intel_syntax noprefix\n");
 					
 					__asm("mov eax, control\n");
 					__asm("push eax\n");
 					__asm("call address\n");
 					__asm("pop ebx\n");
+					*/
 				}
 
 			}
@@ -408,12 +410,14 @@ void cMenuManager::handleInput()
 				{
 					DWORD address = (DWORD)control->function;
 
+					/*
 					__asm(".intel_syntax noprefix\n");
 					
 					__asm("mov eax, control\n");
 					__asm("push eax\n");
 					__asm("call address\n");
 					__asm("pop ebx\n");
+					*/
 				}
 
 			}
@@ -496,12 +500,14 @@ void cMenuManager::handleInput()
 			{
 				DWORD address = (DWORD)control->function;
 
+				/*
 				__asm(".intel_syntax noprefix\n");
 				
 				__asm("mov eax, control\n");
 				__asm("push eax");
 				__asm("call address\n");
 				__asm("pop ebx\n");
+				*/
 			}
 
 		}
