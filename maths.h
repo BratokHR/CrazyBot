@@ -12,7 +12,7 @@
 #define	PITCH					0		// up / down
 #define	YAW						1		// left / right
 #define	ROLL					2		// fall over
-#define M_PI					3.14159265358979323846f
+// #define M_PI					3.14159265358979323846f
 #define M_RADPI					57.295779513082f
 #define	ANGLE2SHORT(x)			((int)((x)*65536/360) & 65535)
 
@@ -66,7 +66,7 @@ void GetAngleToOrigin( vec3_t origin, vec3_t angles );
 void vectoangles( const vec3_t value1, vec3_t angles );
 float GetDistance( vec3_t A, vec3_t B );
 short CG_GetTagNumber( const char * tag_name );
-bool CG_SetTagOrigin( centity_t * cent, short tag, orientation_t * or  );
+bool CG_SetTagOrigin( centity_t * cent, short tag, orientation_t * orient  );
 bool IsVisible( vec3_t point );
 float distance( vec3_t origin );
 clientInfo_t * AimingAtClient( );
