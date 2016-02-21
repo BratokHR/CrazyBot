@@ -1,0 +1,2 @@
+void DetoursInstall();
+void DetoursUnistall();
