@@ -42,6 +42,9 @@ void crazybot::InitVersion()
 		bot.CvarUnlocker1	=					0x00435840;
 		bot.CvarUnlocker2	=					0x0043585F;
 		bot.CvarUnlocker3	=					0x00435890;
+
+		bot.inGame			= (bool *)			0x00C1E26C;
+		bot.inMenu			= (int *)			0x008DC20C;
 	}
 	else if (strcmp(version, "1.2") == 0)
 	{
@@ -71,6 +74,9 @@ void crazybot::InitVersion()
 		bot.CvarUnlocker1	=					0x00437150;
 		bot.CvarUnlocker2	=					0x0043716F;
 		bot.CvarUnlocker3	=					0x004371A0;
+
+		bot.inGame			= (bool *)			0x00CA3144;
+		bot.inMenu			= (int *)			0x00933654;
 	}
 	else 
 	{
@@ -100,6 +106,9 @@ void crazybot::InitVersion()
 		bot.CvarUnlocker1	=					0x004371A0;
 		bot.CvarUnlocker2	=					0x004371BF;
 		bot.CvarUnlocker3	=					0x004371DF;
+		
+		bot.inGame			= (bool *)			0x00D77144;
+		bot.inMenu			= (int *)			0x0096B654;
 	}
 
 	bot.InitSettings = false;

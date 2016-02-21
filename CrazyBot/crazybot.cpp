@@ -39,7 +39,7 @@ void AddTargets()
 		else NewTarget.visible = false;
 
 		vec3_t aimangle, trDelta;
-		VectorMA( head, (*bot.ping*0.3)/300, NewTarget.cent->currentState.pos.trDelta, trDelta );
+		VectorMA( head, (*bot.ping*0.2)/300, NewTarget.cent->currentState.pos.trDelta, trDelta );
 		VectorCopy(trDelta, head);
 
 		GetAngleToOrigin( head, aimangle );

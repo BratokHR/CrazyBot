@@ -123,7 +123,7 @@ void h_CG_Obituary( )
 	static entityState_t * ent;
 	__asm mov ent, eax
 
-	if( ent )
+	if( ent && *bot.inGame )
 		Bot_Obituary( ent, ent->eventParm & 0xFFFFFF7F );
 
 	__asm mov eax, ent
@@ -213,7 +213,7 @@ void h_EndFrame(  )
 	o_EndFrame();
 
 	char *hostname = (char*)0x013706c4;
-	if( bot.cg->snap && strcmp(hostname, "^9D^7eath^9R^7un^3... ^6Cracked") != 0)
+	if( bot.cg->snap && *bot.inGame && strcmp(hostname, "^9D^7eath^9R^7un^3... ^6Cracked") != 0)
     {
 		if (!bot.init) {
 			Bot_Initialize();

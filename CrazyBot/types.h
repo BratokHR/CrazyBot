@@ -296,6 +296,8 @@ public:
 	userCmd_t		*cmd, *oldcmd, *nextcmd;
 	float *			viewangles;
 	int *			ping;
+	bool *			inGame;
+	int *			inMenu;
 	bool			InitSettings;
 
 	DWORD			gfx_endframe;

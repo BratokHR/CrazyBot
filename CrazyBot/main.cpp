@@ -11,7 +11,7 @@ void __stdcall KeyHook()
 		else
 			Aimkeypress = false;
 
-		if (Shoot && !MenuManager.menuOpen)
+		if (Shoot && !MenuManager.menuOpen && *bot.inMenu == 0)
 		{
 			keybd_event(VK_LBUTTON, 0, 0, 0);
 			keybd_event(VK_LBUTTON, 0, KEYEVENTF_KEYUP, 0);
